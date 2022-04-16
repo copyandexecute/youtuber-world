@@ -7,7 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class YoutuberWorld implements ModInitializer {
-    private static final Logger LOGGER = LogManager.getLogger("youtuber-world");
+    private static final Logger LOGGER = LogManager.getLogger("youtuberworld");
 
     @Override
     public void onInitialize() {
