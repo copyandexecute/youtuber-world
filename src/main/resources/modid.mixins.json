@@ -1,12 +1,12 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.fabricmc.example.mixin",
+  "package": "de.hglabor.youtuberworld.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "ChunkGeneratorMixin"
   ],
   "client": [
-    "ExampleMixin"
   ],
   "injectors": {
     "defaultRequire": 1
