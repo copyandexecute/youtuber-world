@@ -37,7 +37,7 @@ public abstract class ChunkGeneratorMixin {
                     Block block = blocks.get(colorIntegerPair.getRight());
                     BlockPos pos = new BlockPos(x, y, z);
                     BlockState currentBlock = region.getBlockState(pos);
-                    if (currentBlock.isAir() || currentBlock.getMaterial().isLiquid() || currentBlock.isOf(Blocks.BEDROCK))
+                    if (currentBlock.isAir() || currentBlock.getMaterial().isLiquid() || currentBlock.isOf(Blocks.CHEST) || currentBlock.isOf(Blocks.BEDROCK) || currentBlock.isOf(Blocks.END_PORTAL_FRAME))
                         continue;
                     region.setBlockState(pos, block.getDefaultState(), Block.NOTIFY_LISTENERS);
                 }
