@@ -1,7 +1,16 @@
 package de.hglabor.youtuberworld.config;
 
 import de.hglabor.youtuberworld.util.ColorUtils;
-import net.minecraft.block.*;
+import net.minecraft.block.BeaconBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.ChorusFlowerBlock;
+import net.minecraft.block.ChorusPlantBlock;
+import net.minecraft.block.FallingBlock;
+import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.ObserverBlock;
+import net.minecraft.block.SandBlock;
+import net.minecraft.block.ShulkerBoxBlock;
+import net.minecraft.block.SpawnerBlock;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
@@ -14,8 +23,13 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
 
 public final class HeadConfig {
     private static final Logger LOGGER = LogManager.getLogger("youtuber-world");
@@ -40,8 +54,15 @@ public final class HeadConfig {
         //#java so geil
         ALLOWED_BLOCKS.addAll(Registry.BLOCK
                 .stream()
-                .filter(block -> Block.isShapeFullCube(block.getDefaultState().getCollisionShape(EmptyBlockView.INSTANCE, BlockPos.ORIGIN)))
+                .filter(block -> {
+                    return Block.isShapeFullCube(block.getDefaultState().getCollisionShape(EmptyBlockView.INSTANCE, BlockPos.ORIGIN));
+                })
                 .toList());
+        ALLOWED_BLOCKS.removeIf(block -> {
+            return block instanceof ShulkerBoxBlock || block instanceof SpawnerBlock || block instanceof ChorusPlantBlock || block instanceof ChorusFlowerBlock
+                    || block instanceof LeavesBlock || block instanceof ObserverBlock || block instanceof BeaconBlock || block instanceof FallingBlock
+                    ;
+        });
     }
 
     public static void loadPngs() throws Exception {
